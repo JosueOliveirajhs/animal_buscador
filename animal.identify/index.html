@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Identifier</title>
+    <meta name="description" content="Identifique animais através de fotos">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicon tradicional -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    
+    <!-- Ícones PWA Android -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/android-chrome-512x512.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐾 Animal Identifier</h1>
+            <p>Identifique animais através de fotos</p>
+        </header>
+
+        <main>
+            <div class="camera-section">
+                <div id="camera-view" class="camera-view">
+                    <video id="video" autoplay playsinline></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                    <img id="preview-image" class="hidden" alt="Preview da imagem">
+                </div>
+                
+                <div class="camera-controls">
+                    <button id="capture-btn" class="btn primary">Tirar Foto</button>
+                    <button id="upload-btn" class="btn secondary">Carregar Imagem</button>
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                </div>
+
+                <div class="animal-type-selector">
+                    <label for="animal-type-select">Tipo de animal:</label>
+                    <select id="animal-type-select">
+                        <option value="mammals">Mamíferos</option>
+                        <option value="birds">Aves</option>
+                        <option value="reptiles">Répteis</option>
+                        <option value="insects">Insetos</option>
+                        <option value="marine">Animais Marinhos</option>
+                        <option value="general">Geral</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="result-section" class="result-section hidden">
+                <h2>Resultado da Identificação</h2>
+                <div class="result-header">
+                    <div id="confidence" class="confidence"></div>
+                    <div id="results-count" class="results-count"></div>
+                </div>
+                <div id="animal-info" class="animal-info">
+                    <!-- Resultados serão inseridos aqui -->
+                </div>
+                <button id="new-identification" class="btn secondary">Nova Identificação</button>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Identificando animal...</p>
+            </div>
+
+            <div id="error-message" class="error hidden">
+                <p>Ocorreu um erro. Tente novamente.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Utiliza APIs de inteligência artificial para identificação</p>
+            <p class="api-info">Funciona mesmo offline em modo demonstração</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
